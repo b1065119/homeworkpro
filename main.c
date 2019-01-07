@@ -10,7 +10,7 @@ int main(int argc, char *argv[ ])
 //cmd open this
 {
     long seed;
-    srand(time(NULL));
+    srand(time(0));
     int turn=strtol(argv[1], NULL, 10);
     int target=strtol(argv[2], NULL, 10);
 
