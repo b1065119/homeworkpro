@@ -1,15 +1,15 @@
 #include"header.h"
 #include"func.h"
 
-void fill_candy(struct map A[][col])
+void fill_candy(struct map A[][COL])
 //Array filled with candy
 //input Array
 //output Array filled with candy
 {
     int i,j;
-    for(i=0; i<row; i=i+1)
+    for(i=0; i<ROW; i=i+1)
     {
-        for(j=0; j<col; j=j+1)
+        for(j=0; j<COL; j=j+1)
         {
             A[i][j].candy=random(&A[i][j].candy,5,1);        //the random number is from 5 to 1
         }
@@ -29,7 +29,7 @@ int random(int *ptr,int max,int min)
     return *ptr;
 }
 
-void show_map(struct map A[][col])
+void show_map(struct map A[][COL])
 //Show candy
 //input Array
 //output show Array
@@ -37,17 +37,17 @@ void show_map(struct map A[][col])
 {
     int i,j;
     printf("\t\tcol\n     0  1  2  3  4  5  6  7  8\n    --------------------------\n");
-    for(i=0; i<row; i=i+1)
+    for(i=0; i<ROW; i=i+1)
     {
-        if(i==(row/3))
+        if(i==(ROW/3))
             printf("r %d|",i);
-        else if(i==(row/3)+1)
+        else if(i==(ROW/3)+1)
             printf("o %d|",i);
-        else if(i==(row/3)+2)
+        else if(i==(ROW/3)+2)
             printf("w %d|",i);
         else
             printf("  %d|",i);
-        for(j=0; j<col; j=j+1)
+        for(j=0; j<COL; j=j+1)
         {
             printf(" %d ",A[i][j].candy );
         }
@@ -66,7 +66,7 @@ void swap(int *p1,int *p2)
     *p2=temp;
 }
 
-void check_row_and_polygon(struct map A[][col])
+void check_row_and_polygon(struct map A[][COL])
 //Three or more consecutive row candy and trapezoidal judgments are eliminated
 //Input Array
 //Output Three or more consecutive candy and trapezoids become eliminated mode
@@ -76,12 +76,12 @@ void check_row_and_polygon(struct map A[][col])
     int temp,end,cont;
     int vary1,vary2,vary3;                           //Cumulative variable
 
-    for(i=0; i<row; i=i+1)
+    for(i=0; i<ROW; i=i+1)
     {
-        a=row-1-i;                                   //New row
+        a=ROW-1-i;                                   //New row
 
-        for(j=0; j<col-2; j=j+1)
-        {
+        for(j=0; j<COL-2; j=j+1)
+
             temp=0;                                  //Temporary location
             if( (A[a][j].candy==A[a][j+1].candy) && (A[a][j+1].candy==A[a][j+2].candy) )       //If three continued are the same
             {
@@ -125,9 +125,9 @@ void check_row_and_polygon(struct map A[][col])
             }
         }
     }
-}
 
-void check_col(struct map A[][col])
+
+void check_col(struct map A[][COL])
 //Three or more consecutive col candy judgments are eliminated
 //Input Array
 //Output Three or more candy become eliminated mode
@@ -135,10 +135,10 @@ void check_col(struct map A[][col])
     int i,j;
     int temp;
     int vary1;
-    for(i=0; i<col; i=i+1)
+    for(i=0; i<COL; i=i+1)
     {
 
-        for(j=0; j<row-2; j=j+1)
+        for(j=0; j<ROW-2; j=j+1)
         {
             temp=0;                                  //Temporary location
             if( (A[j][i].candy==A[j+1][i].candy) && (A[j+1][i].candy==A[j+2][i].candy) )         //If three continued are the same
@@ -167,7 +167,7 @@ void filled_zero(int *p1)
     *p1=0;
 }
 
-int countinued_turned_zero(struct map A[][col],int num1,int num2,int row1,int col1,int temp)
+int countinued_turned_zero(struct map A[][COL],int num1,int num2,int row1,int col1,int temp)
 //Use the three connected candy to find the branch
 //Input array,variable1,variable2,row,col,and the temporary location
 //Output the branch of the same candy turned to eliminated mode
@@ -182,7 +182,7 @@ int countinued_turned_zero(struct map A[][col],int num1,int num2,int row1,int co
             count1=num1;
             count2=num2;
 
-            if( ((count2+col1)== col) || (count1+row1)==row )           //if the location is over the map
+            if( ((count2+col1)== COL) || (count1+row1)==ROW )           //if the location is over the map
             {
                 goto start1;
             }
@@ -243,7 +243,7 @@ int decide_num(int num,int variable)
 
 }
 
-void check_row_col_polygon(struct map A[][col])
+void check_row_col_polygon(struct map A[][COL])
 //Check all shape
 //Input Array
 //Output the continued all turned to eliminated mode
@@ -254,7 +254,7 @@ void check_row_col_polygon(struct map A[][col])
 
 }
 
-int check_col_zero(struct map A[][col],int col1)
+int check_col_zero(struct map A[][COL],int col1)
 //check each col's zero
 //Input array
 //output how many zero
@@ -264,7 +264,7 @@ int check_col_zero(struct map A[][col],int col1)
 
     count=0;
 
-    for(i=0; i<row; i=i+1)
+    for(i=0; i<ROW; i=i+1)
     {
         if(A[i][col1].candy==0)
         {
@@ -274,7 +274,7 @@ int check_col_zero(struct map A[][col],int col1)
     return count;
 }
 
-void sort_zero(struct map A[][col])
+void sort_zero(struct map A[][COL])
 //put zero on top
 //input array
 //output zero on top
@@ -282,15 +282,15 @@ void sort_zero(struct map A[][col])
     int i,j,k;
     int row1,count;
 
-    for(i=0; i<col; i=i+1)
+    for(i=0; i<COL; i=i+1)
     {
         count=check_col_zero(A,i);
 
         for(k=0; k<count; k=k+1)
         {
-            for(j=1; j<row; j=j+1)
+            for(j=1; j<ROW; j=j+1)
             {
-                row1=row-j;
+                row1=ROW-j;
 
                 if(A[row1][i].candy==0)
                 {
@@ -301,7 +301,7 @@ void sort_zero(struct map A[][col])
     }
 }
 
-int check_zero(struct map A[][col])
+int check_zero(struct map A[][COL])
 //if there is eliminated mode return 1 else return 0
 //input array
 //output determine eliminated mode
@@ -311,9 +311,9 @@ int check_zero(struct map A[][col])
 
     count=0;
 
-    for(j=0; j<row; j=j+1)
+    for(j=0; j<ROW; j=j+1)
     {
-        for(i=0; i<col; i=i+1)
+        for(i=0; i<COL; i=i+1)
         {
             if(A[j][i].candy==0)
             {
@@ -326,15 +326,15 @@ int check_zero(struct map A[][col])
 
 }
 
-void falled_rand(struct map A[][col])
+void falled_rand(struct map A[][COL])
 //if there is eliminated mode give it new rand
 //input array
 //output eliminated form turned to random
 {
     int i,j;
-    for(i=0; i<row; i=i+1)
+    for(i=0; i<ROW; i=i+1)
     {
-        for(j=0; j<col; j=j+1)
+        for(j=0; j<COL; j=j+1)
         {
             if(A[i][j].candy==0)                                //if there is eliminated form
             {
@@ -343,7 +343,7 @@ void falled_rand(struct map A[][col])
         }
     }
 }
-int point_candy(struct map A[][col])
+int point_candy(struct map A[][COL])
 //each eliminated mode give it score
 //input array
 //output point
@@ -353,9 +353,9 @@ int point_candy(struct map A[][col])
 
     point=0;
 
-    for(i=0; i<row; i=i+1)
+    for(i=0; i<ROW; i=i+1)
     {
-        for(j=0; j<col; j=j+1)
+        for(j=0; j<COL; j=j+1)
         {
             if(A[i][j].candy==0)
             {
@@ -367,7 +367,7 @@ int point_candy(struct map A[][col])
     return point;
 }
 
-int cycle_check1(struct map A[][col])
+int cycle_check1(struct map A[][COL])
 //check candy until there is no three continued candy,and get the point
 //input array
 //output the point each step get
@@ -400,7 +400,7 @@ int cycle_check1(struct map A[][col])
     return point;
 }
 
-void cycle_check2(struct map A[][col])
+void cycle_check2(struct map A[][COL])
 //the start candy map
 //input array
 //output the map that is no three continued
@@ -421,7 +421,7 @@ void cycle_check2(struct map A[][col])
     while(count==1);
 }
 
-void switch_candy(struct map A[][col])
+void switch_candy(struct map A[][COL])
 //switch two candy and determine whether it is correct
 //input array
 //output move
@@ -437,7 +437,7 @@ void switch_candy(struct map A[][col])
         printf("input col:");
         scanf("%d", &y);                           //input col
 
-        if((x>=0&&x<row)&&(y>=0&&y<col))//make sure the row and col in this range
+        if((x>=0&&x<ROW)&&(y>=0&&y<COL))//make sure the row and col in this range
         {
             printf("enter your direction ");
             scanf("%d", &ch);
@@ -459,7 +459,7 @@ void switch_candy(struct map A[][col])
     while(count==0);
 }
 
-int select_direction(int ch,struct map A[][col],int x,int y)
+int select_direction(int ch,struct map A[][COL],int x,int y)
 //direction whether it is correct or not
 //input the direction array and the row col
 //output the variable which represent is it correct
@@ -490,7 +490,7 @@ int select_direction(int ch,struct map A[][col],int x,int y)
     return 0;
 }
 
-int double_check_switch(struct map A[][col],int row1,int col1,int row2,int col2)
+int double_check_switch(struct map A[][COL],int row1,int col1,int row2,int col2)
 //check everything after you switch
 //input array row col and new row new col
 //output determine whether it is correct
@@ -513,15 +513,15 @@ int double_check_switch(struct map A[][col],int row1,int col1,int row2,int col2)
     return count3;
 }
 
-int check_row_switch(struct map A[][col])
+int check_row_switch(struct map A[][COL])
 //check row
 //input array
 //output is it correct
 {
     int i,j;
-    for(i=0; i<row; i=i+1)
+    for(i=0; i<ROW; i=i+1)
     {
-        for(j=0; j<col-2; j=j+1)
+        for(j=0; j<COL-2; j=j+1)
         {
             if( (A[i][j].candy==A[i][j+1].candy) && (A[i][j+1].candy==A[i][j+2].candy) )
             {
@@ -534,15 +534,15 @@ int check_row_switch(struct map A[][col])
     return 0;
 }
 
-int check_col_switch(struct map A[][col])
+int check_col_switch(struct map A[][COL])
 //check col
 //input array
 //output is it correct
 {
     int i,j;
-    for(i=0; i<col; i=i+1)
+    for(i=0; i<COL; i=i+1)
     {
-        for(j=0; j<row-2; j=j+1)
+        for(j=0; j<ROW-2; j=j+1)
         {
             if( (A[j][i].candy==A[j+1][i].candy) && (A[j+1][i].candy==A[j+2][i].candy) )
             {
@@ -602,7 +602,7 @@ int determine_wrong_move(int row1,int col1)
 //input row and col
 //output is it correct
 {
-    if( (row1<0 || row1>=row) || (col1<0 || col1>=col) )
+    if( (row1<0 || row1>=ROW) || (col1<0 || col1>=COL) )
     {
         return 0;
     }
@@ -612,7 +612,7 @@ int determine_wrong_move(int row1,int col1)
     }
 }
 
-void game(struct map A[][col],struct player B[],struct player C[],int turn,int target)
+void game(struct map A[][COL],struct player B[],struct player C[],int turn,int target)
 //candy crush
 //input array player information
 //output game

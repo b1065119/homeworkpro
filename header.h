@@ -4,8 +4,8 @@
 #include<limits.h>
 #include<math.h>
 
-#define row 9
-#define col 9
+#define ROW 9
+#define COL 9
 #define SIZE 9
 #define SCORE 5
 
