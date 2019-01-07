@@ -631,6 +631,7 @@ void game(struct map A[][col],struct player B[],struct player C[],int turn,int t
 
     printf("hellow world ");
     printf("hellow world");
+        printf("hellow world");
 
     printf("\n");
     printf("WELCOME TO CANDY CRUSH \n\n\n");
