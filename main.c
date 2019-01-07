@@ -19,6 +19,7 @@ int main(int argc, char *argv[ ])
     game(A,B,C,turn,target);
     printf("12345");
     int i;
+    for(i=0;i<100;i++);
 
     return 0;
 }
