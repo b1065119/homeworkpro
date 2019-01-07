@@ -259,14 +259,14 @@ int check_col_zero(struct map A[][col],int col1)
 //Input array
 //output how many zero
 {
-    int i;
+    int k;
     int count;
 
     count=0;
 
-    for(i=0; i<row; i=i+1)
+    for(k=0; k<row; k=k+1)
     {
-        if(A[i][col1].candy==0)
+        if(A[k][col1].candy==0)
         {
             count=count+1;       //how many zero
         }
