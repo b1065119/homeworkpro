@@ -629,6 +629,7 @@ void game(struct map A[][col],struct player B[],struct player C[],int turn,int t
     cycle_check2(A);
     show_map(A);
 
+    printf("hellow world ");
 
     printf("\n");
     printf("WELCOME TO CANDY CRUSH \n\n\n");
