@@ -17,6 +17,7 @@ int main(int argc, char *argv[ ])
     struct player B[10];
     struct player C[10];
     game(A,B,C,turn,target);
+    printf("12345");
 
     return 0;
 }
